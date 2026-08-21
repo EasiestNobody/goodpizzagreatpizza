@@ -255,13 +255,44 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// Close modal on Escape
+// Keyboard Navigation & Shortcuts
 document.addEventListener('keydown', (e) => {
+  // Always allow Escape to close active modals
   if (e.key === 'Escape') {
     document.querySelectorAll('.modal-overlay.active').forEach(m => {
       m.classList.remove('active');
     });
     document.body.style.overflow = '';
+    return;
+  }
+
+  // Disable single-key shortcuts when typing in inputs or textareas
+  const activeTag = document.activeElement ? document.activeElement.tagName.toLowerCase() : '';
+  if (activeTag === 'input' || activeTag === 'textarea' || activeTag === 'select') {
+    return;
+  }
+
+  // Global Quick Navigation Hotkeys
+  const key = e.key.toLowerCase();
+  if (key === 'c' || key === 'o') {
+    scrollToOrder();
+  } else if (key === 'm') {
+    const el = document.getElementById('menu');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  } else if (key === 'p') {
+    const el = document.getElementById('promos');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  } else if (key === 'd') {
+    const el = document.getElementById('addons');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  } else if (key === 'l') {
+    const el = document.getElementById('location');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  } else if (key === 'h') {
+    const el = document.getElementById('home');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  } else if (key === '?') {
+    showToast('Shortcuts: [M]enu, [P]romos, [D]rinks, [C]art/Order, [L]ocation, [H]ome, [Esc] Close Modal');
   }
 });
 

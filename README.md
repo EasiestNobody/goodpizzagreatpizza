@@ -202,8 +202,8 @@ Follow these steps to run the project locally on your machine:
 
 ### 1️⃣ Clone the Repository
 ```bash
-git clone https://github.com/EasiestNobody/Good_Pizza_Great_Pizza.git
-cd Good_Pizza_Great_Pizza
+git clone https://github.com/EasiestNobody/goodpizzagreatpizza.git
+cd goodpizzagreatpizza
 ```
 
 ### 2️⃣ Run the Website
